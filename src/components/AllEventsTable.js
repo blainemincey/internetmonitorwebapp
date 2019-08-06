@@ -81,12 +81,26 @@ class AllEventsTable extends Component {
                                         {
                                             id: "timeSeriesData.networkType",
                                             Header: "Type",
-                                            accessor: d => d.timeSeriesData.networkType
+                                            accessor: d => d.timeSeriesData.networkType,
+                                            Cell: row => <div style={{textAlign: "center"}}>{row.value}</div>
                                         },
                                         {
                                             id: "timeSeriesData.status",
-                                            Header: "Status",
-                                            accessor: d => d.timeSeriesData.status
+                                            Header: 'Status',
+                                            accessor: d => d.timeSeriesData.status,
+                                            Cell: row => (
+                                                    <div
+                                                        style={{
+                                                            width: '100%',
+                                                            height: '100%',
+                                                            backgroundColor: row.value === 'UP' ? '#85cc00'
+                                                                : row.value === 'DOWN' ? '#ff2e00'
+                                                                    : '',
+                                                            borderRadius: '2px',
+                                                            transition: 'all .2s ease-out'
+                                                        }}
+                                                    />
+                                            )
                                         }
                                     ]
                                 }
